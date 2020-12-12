@@ -10,7 +10,9 @@ Please read the following instructions on how to install the project on your com
 
 # Prerequisites
 
-None
+<a href="https://github.com/luciangreen/listprologinterpreter">List Prolog Interpreter</a>
+
+<a href="https://github.com/luciangreen/culturaltranslationtool">Cultural Translation Tool</a>
 
 
 # Installation from List Prolog Package Manager (LPPM)
