@@ -35,6 +35,8 @@ Install <a href="https://github.com/soimort/translate-shell">Translation Shell</
 Change line in ctt.pl
 `concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),` to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>
 
+You may need to install gawk using Homebrew.
+
 * Download the repository to your machine.
 In the SWI-Prolog environment, enter:
 `cd listprologinterpreter`
