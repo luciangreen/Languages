@@ -14,6 +14,10 @@ Please read the following instructions on how to install the project on your com
 
 <a href="https://github.com/luciangreen/culturaltranslationtool">Cultural Translation Tool</a>
 
+Install <a href="https://github.com/soimort/translate-shell">Translation Shell</a> on Mac, etc.
+Change line in ctt.pl
+`concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),` to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>
+
 
 # Installation from List Prolog Package Manager (LPPM)
 
@@ -27,7 +31,9 @@ loading LPPM with `['lppm'].` then installing the package by running `lppm_insta
 
 * Please download and install SWI-Prolog for your machine at https://www.swi-prolog.org/build/.
 
-* Install <a href="https://github.com/soimort/translate-shell">Translation Shell</a> on Mac, etc.
+Install <a href="https://github.com/soimort/translate-shell">Translation Shell</a> on Mac, etc.
+Change line in ctt.pl
+`concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),` to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>
 
 * Download the repository to your machine.
 In the SWI-Prolog environment, enter:
