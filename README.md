@@ -48,6 +48,8 @@ lang_db_generator("fr",["de","ga"])
 ```
 to install German (de) and Irish (ga).  The French file is used to translate English commands.
 
+* Move the `<language code>.txt` file to `listprologinterpreter/languages/*`.
+
 # Versioning
 
 We will use SemVer for versioning.
