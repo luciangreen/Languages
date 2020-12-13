@@ -27,6 +27,7 @@ You may need to install gawk using Homebrew.
 ```
 git clone https://github.com/luciangreen/List-Prolog-Package-Manager.git
 cd List-Prolog-Package-Manager
+swipl
 ```
 loading LPPM with `['lppm'].` then installing the package by running `lppm_install("luciangreen","Languages").`.
 
