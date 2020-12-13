@@ -87,22 +87,31 @@ get_lang_word(Input,Output) :-
 	lang_db(Lang_db),
 	(Lang="en"->%Input=Output1,
 	atom_string(Output,Input);
-	((split_on_number1(Input,Input1,Input10),member([Input1,_Input10,Lang,Output2],Lang_db),(Input10="" -> Output=Output2;
+	((%trace,
+	split_on_number(Input,Input1,Input10),member([Input1,_Input101,Lang,Output2],Lang_db),
+	%notrace,
+	(Input10="" -> Output=Output2;
 	concat_list([Output2," ",Input10],Output))) -> true;
 	(concat_list(["Error: Word: ",Input," not in Language: ",Lang," in lang_db."],Notification1),writeln(Notification1),abort))),
 	%Output=Output1,
 	!.
 	%atom_string(Output,Output1),!.
 
+%split_on_number(Input,Input1,Input10) :-
+%findall([Input1,Input10],split_on_number1(Input,Input1,Input10),Output1),
+%reverse(Output1,[[Input1,Input10]|_]).
 split_on_number(Input,Input1,Input10) :-
-findall([Input1,Input10],split_on_number1(Input,Input1,Input10),Output1),
-reverse(Output1,[[Input1,Input10]|_]). %% Bug in Prolog?
-split_on_number1(Input,Input1,Input10) :-
 	string_concat(A,B,Input),
 	string_concat(C,_D,B),
 	string_length(C,1),
-	(number_string(_,C)->(Input1=A,Input10=B);
-	(Input1=Input,Input10="")).
+	%string_concat(E,_F,D),
+	%string_length(E,1),
+	%((
+	%C=" ",
+	number_string(_,C),%)->(
+	Input1=A,Input10=B,!.%);
+split_on_number(Input,Input1,Input10) :-
+	Input1=Input,Input10="".
 	
 	
 % stringconcat-> in both algs above
