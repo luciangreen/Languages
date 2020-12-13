@@ -55,7 +55,7 @@ To install a new language (see available <a href="https://github.com/soimort/tra
 ```
 cd Languages
 swipl
-lang_db_generator("fr",["de","ga"])
+lang_db_generator("fr",["de","ga"]).
 ```
 to install German (de) and Irish (ga).  The French file is used to translate English commands.
 
