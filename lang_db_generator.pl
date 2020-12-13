@@ -87,7 +87,7 @@ get_lang_word(Input,Output) :-
 	lang_db(Lang_db),
 	(Lang="en"->%Input=Output1,
 	atom_string(Output,Input);
-	((%trace,
+	((%(%((Input="member2"->trace;true),
 	split_on_number(Input,Input1,Input10),member([Input1,_Input101,Lang,Output2],Lang_db),
 	%notrace,
 	(Input10="" -> Output=Output2;
