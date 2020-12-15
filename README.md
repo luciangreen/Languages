@@ -52,7 +52,7 @@ To run the test, enter:
 
 # Languages commands
 
-To install a new language (see available <a href="https://github.com/soimort/translate-shell">language codes</a>):
+* To install a new language for LPI (see available <a href="https://github.com/soimort/translate-shell">language codes</a>):
 ```
 cd Languages
 swipl
@@ -60,7 +60,23 @@ lang_db_generator("fr",["de","ga"]).
 ```
 to install German (de) and Irish (ga).  The French file is used to translate English commands.
 
-* Move the `<language code>.txt` file to `listprologinterpreter/languages/*`.
+Move the `<language code>.txt` file to `listprologinterpreter/languages/*`.
+
+* To generate LPI documentation in a language:
+```
+cd Languages
+swipl
+['make_docs.pl'].
+make_docs.
+```
+
+The following is displayed, and the user enters a language code (installed from the previous step):
+```
+Enter target language code for LPI docs:
+|: fr
+```
+
+* Note: The trans shell software has a quota, so it is recommended to translate 300 words of doc.txt at a time by editing it before running.  Lucian Academy does not support using another language and gives no guarantee for the software.
 
 # Versioning
 
