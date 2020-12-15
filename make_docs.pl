@@ -33,17 +33,24 @@ process1(Input1,To_lang,String1,String2) :-
 	retractall(to_lang2(_)),
 	assertz(to_lang(To_lang)),
 	(data([B1],[],[B2])->true;(concat_list(["Error: Couldn't translate list prolog: ",B],N),writeln(N),abort)),
+	%trace,
 	term_to_atom(B2,B3),
 	concat_list([String3,"`",B3,"`"],String4),
 writeln("****"),
 writeln(String4),
-	process1(Rest,To_lang,String4,String2).
+	process1(Rest,To_lang,String4,String2),!.
+process1([],_To_lang,String,String) :- !.
 process1([A|As],_To_lang,String1,String2) :- 
+%trace,
 	%term_to_atom(A,A1),
 	%term_to_atom(As,As1),
-	(As=[]->concat_list([String1,A],String2);
+	(As=[]->(concat_list([String1,A],String2)
+	%,notrace
+	);
 	(maplist(append,[[[String1],[A],As]],[C]),
-	concat_list(C,String2))),!.
+	concat_list(C,String2)
+	%,notrace
+	)),!.
 
 % v< x > v < x > 
 process2(Input2,To_lang,String1,String2) :-
@@ -53,7 +60,8 @@ process2(Input2,To_lang,String1,String2) :-
 	concat_list([String1,A1,"<",B,">",C1,"<",D,">"],String3),
 writeln("****"),
 writeln(String3),
-	process2(Rest,To_lang,String3,String2).
+	process2(Rest,To_lang,String3,String2),!.
+process2([],_To_lang,String,String) :- !.
 process2([A|As],_To_lang,String1,String2) :- 
 	%term_to_atom(A,A1),
 	%term_to_atom(As,As1),
