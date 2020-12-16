@@ -4,6 +4,7 @@
 :-include('../culturaltranslationtool/ctt.pl'). %
 :-include('data.pl').
 :-include('lang_db_generator-nonabort.pl'). %
+:- include('translate4.pl').
 
 % translates list prolog code between ``
 % in the following, translates v, doesn't translate x

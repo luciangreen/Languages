@@ -2,8 +2,9 @@
 %% New repository, with dbs in each rep
 
 :- include('../culturaltranslationtool/ctt.pl').
-:- include('../culturaltranslationtool/edit.pl').
+%:- include('../culturaltranslationtool/edit.pl').
 :- include('../listprologinterpreter/la_strings').
+:- include('translate4.pl').
 
 :- dynamic lang_db/1.
 
@@ -49,7 +50,11 @@ lang_db_generator(List_of_words,Target_language1) :-
 	findall(_,(member(Target_language10,Target_language1),
 	(string(Target_language10)->true;(concat_list(["Error: Target_language1: ",Target_language1," not in format \"<Target_language1>\"."],Notification1),writeln(Notification1),abort)),
 
-findall([Input,Input1,Target_language10,Output3],(member([Input,Input1],List_of_words2),translate(Input1,"en",Target_language10,Output3)),Output4),
+%split_on_number(Target_language10,Target_language101,_),
+%trace,
+findall([Input,Input1,Target_language10,Output3],(
+member([Input,Input1],List_of_words2),
+(Target_language10="en2"->Output3=Input1;translate(Input1,"en",Target_language10,Output3))),Output4),
 
 	%% save file
 	%% ** add to prev file

@@ -52,7 +52,7 @@ lang_db_generator(List_of_words,Target_language1) :-
 	(string(Target_language10)->true;(concat_list(["Error: Target_language1: ",Target_language1," not in format \"<Target_language1>\"."],_Notification1)%,writeln(Notification1)
 	,fail)),
 
-findall([Input,Input1,Target_language10,Output3],(member([Input,Input1],List_of_words2),translate(Input1,"en",Target_language10,Output3)),Output4),
+findall([Input,Input1,Target_language10,Output3],(member([Input,Input1],List_of_words2),translate4(Input1,"en",Target_language10,Output3)),Output4),
 
 	%% save file
 	%% ** add to prev file
@@ -105,7 +105,7 @@ split_on_number(Input,Input1,Input10),((member([Output2,_Input101,From_lang,Inpu
 	%notrace,
 	(Input10="" -> Output3=Output2;
 	concat_list([Output2,"",Input10],Output3)))->true;
-	(translate(Input1,From_lang,To_lang,Output2),
+	(translate4(Input1,From_lang,To_lang,Output2),
 	(Input10="" -> Output3=Output2;
 	concat_list([Output2,"",Input10],Output3)))
 	),
@@ -122,7 +122,7 @@ get_lang_word3(Input0,From_lang,To_lang,Output) :-
 	%notrace,
 	(Input10="" -> Output=Output2;
 	concat_list([Output2," ",Input10],Output)))->true;
-	(translate(Input1,From_lang,To_lang,Output2),
+	(translate4(Input1,From_lang,To_lang,Output2),
 	(Input10="" -> Output=Output2;
 	concat_list([Output2," ",Input10],Output)))
 	),
@@ -143,7 +143,7 @@ get_lang_word3(Input,From_lang,To_lang,Output) :-
 	%notrace,
 	(Input10="" -> Output=Output2;
 	concat_list([Output2," ",Input10],Output)))->true;
-	(translate(Input1,From_lang,To_lang,Output2),
+	(translate4(Input1,From_lang,To_lang,Output2),
 	(Input10="" -> Output=Output2;
 	concat_list([Output2," ",Input10],Output)))
 	), %-> true;
