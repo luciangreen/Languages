@@ -5,6 +5,11 @@
 :-include('data.pl').
 :-include('lang_db_generator-nonabort.pl').
 
+% translates list prolog code between ``
+% in the following, translates v, doesn't translate x
+% v< x > v < x > 
+% v & x &
+
 string(String) --> list(String).
 
 list([]) --> [].
