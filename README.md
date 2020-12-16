@@ -60,8 +60,6 @@ lang_db_generator("fr",["de","ga"]).
 ```
 to install German (de) and Irish (ga).  The French file is used to translate English commands.
 
-Move the `<language code>.txt` file to `listprologinterpreter/languages/*`.
-
 * To generate LPI documentation in a language:
 ```
 cd Languages
