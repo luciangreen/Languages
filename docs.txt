@@ -7,8 +7,10 @@
 * You may need to install gawk using Homebrew.
 
 * Install <a href="https://github.com/soimort/translate-shell">Translation Shell</a> on Mac, etc.
-Change line in culturaltranslationtool/ctt.pl
-concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F), to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>.
+Change line in & culturaltranslationtool/ctt.pl
+concat_list(["../../../trans ",FromLang,":",ToLang," '",Input1,"'"],F),
+&
+to correct location of <a href="https://github.com/soimort/translate-shell">trans</a>.
 
 # 1. Install manually
 
@@ -18,13 +20,14 @@ Download <a href="http://github.com/luciangreen/listprologinterpreter/">this rep
 
 * Download the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>:
 
+&
 git clone https://github.com/luciangreen/List-Prolog-Package-Manager.git
 cd List-Prolog-Package-Manager
 swipl
 ['lppm'].
 lppm_install("luciangreen","listprologinterpreter")
 halt
-
+&
 
 # Running
 
@@ -36,13 +39,13 @@ swipl
 
 * Running the tests
 To run all tests, enter:
-test(off,NTotal,Score).
+&test(off,NTotal,Score).&
 
 * To run a specific test:
-test1(off,TestNumber,Passed).
+&test1(off,TestNumber,Passed).&
 where TestNumber is the test number from <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4.pl">lpiverify4.pl</a>.
 
-* The query test1(off,7,Passed). tests the reverse predicate:
+* The query &test1(off,7,Passed).& tests the reverse predicate:
 test(7,`[[n,reverse],[[1,2,3],[],[v,l]]]`,
 `[[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],":-",[[[n,head],[[v,l],[v,h]]],[[n,tail],[[v,l],[v,t]]],[[n,wrap],[[v,h],[v,h1]]],[[n,append],[[v,h1],[v,m],[v,o]]],[[n,reverse],[[v,t],[v,o],[v,n]]]]]]`,
 `[[[v,l], [3, 2, 1]]]`).
@@ -51,15 +54,15 @@ test(7,`[[n,reverse],[[1,2,3],[],[v,l]]]`,
 # Documentation
 
 * The interpreter is called in the form:
-international_interpret([lang,en],Debug,Query,TypeStatements,ModeStatements,Functions,Result).
+&international_interpret([lang,en]&,debug,query,type_statements,mode_statements,functions,result).
 
 Where:
-Debug - on or off for trace,
-Query - the query e.g. [[n,reverse],[[1,2,3],[],[v,l]]]
-TypeStatements - e.g. [[n,reverse],[[[t,number],[t,number],[t,number]],[],[[t,number],[t,number],[t,number]]]]
-ModeStatements - e.g. [[n,reverse],[[input,input,input],[],[output,output,output]]]
-Functions - the algorithm e.g. see reverse above
-Result - the result, e.g. [[[v,l], [3, 2, 1]]] ([] indicates failed and [[]] indicates the empty list).
+debug - on or off for trace,
+query - the query e.g. [[n,reverse],[[1,2,3],[],[v,l]]]
+type statements - e.g. [[n,reverse],[[[t,number],[t,number],[t,number]],[],[[t,number],[t,number],[t,number]]]]
+mode statements - e.g. [[n,reverse],[[input,input,input],[],[output,output,output]]]
+functions - the algorithm e.g. see reverse above
+result - the result, e.g. [[[v,l], [3, 2, 1]]] ([] indicates failed and [[]] indicates the empty list).
 
 * Statements may be negated in the form:
 

@@ -76,7 +76,7 @@ Enter target language code for LPI docs:
 |: fr
 ```
 
-* Note: The trans shell software has a quota, so it is recommended to translate 300 words of doc.txt at a time by editing it before running.  Lucian Academy does not support using another language and gives no guarantee for the software.
+* Note: The trans shell software has a quota, so it is recommended to translate 60 words of doc.txt at a time by editing it before running.  Lucian Academy does not support using another language and gives no guarantee for the software.
 
 # Versioning
 

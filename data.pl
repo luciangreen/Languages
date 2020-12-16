@@ -11,7 +11,7 @@ data(Value1a,Value2,Value3) :-
 data(Value1a,Value2,Value3) :-
 	to_lang(To_lang),
 	((atom(Value1a)->true;(string(Value1a)->true;(number(Value1a))))->
-	(translate2(Value1a,"en",To_lang,Value1b),
+	(translate2(Value1a,"en",To_lang,Value1b), %% translate2
 	append(Value2,[Value1b],Value3))),!.
 data(Value1,Value2,Value3) :-
 	Value1=(Value4=Value4a),
