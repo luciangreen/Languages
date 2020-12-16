@@ -1,9 +1,9 @@
 % make_docs.pl
 
 :-include('../listprologinterpreter/la_strings.pl').
-:-include('../culturaltranslationtool/ctt.pl').
+:-include('../culturaltranslationtool/ctt.pl'). %
 :-include('data.pl').
-:-include('lang_db_generator-nonabort.pl').
+:-include('lang_db_generator-nonabort.pl'). %
 
 % translates list prolog code between ``
 % in the following, translates v, doesn't translate x
@@ -36,7 +36,7 @@ process1(Input1,To_lang,String1,String2) :-
 	process2(Input2,To_lang,String1,String3),
 	term_to_atom(B1,B),
 	retractall(to_lang2(_)),
-	assertz(to_lang(To_lang)),
+	assertz(to_lang2(To_lang)),
 	(data([B1],[],[B2])->true;(concat_list(["Error: Couldn't translate list prolog: ",B],N),writeln(N),abort)),
 	%trace,
 	term_to_atom(B2,B3),
@@ -69,17 +69,20 @@ writeln("****"),
 writeln(String3),
 	process2(Rest,To_lang,String3,String2),!.
 process2([],_To_lang,String,String) :- !.
-process2([A|As],_To_lang,String1,String2) :- 
+process2([A|As],To_lang,String1,String2) :- 
+	split_string(A,"&","&",A11), % docs.txt needs a character between `,<,>,&
+	process3(A11,To_lang,"",A1),
+
 	%term_to_atom(A,A1),
 	%term_to_atom(As,As1),
-	(As=[]->concat_list([String1,A],String2);
-	(maplist(append,[[[String1],[A],As]],[C]),
+	(As=[]->concat_list([String1,A1],String2);
+	(maplist(append,[[[String1],[A1],As]],[C]),
 	concat_list(C,String2))),!.
 
 % v & x &
 process3(Input2,To_lang,String1,String2) :-
 	Input2=[A,B|Rest],
-	translate2(A,"en",To_lang,A1),
+	translate2(A,"en",To_lang,A1), % 1a,2
 	%translate2(C,"en",To_lang,C1),
 	%C=C1,
 	concat_list([String1,A1,B],String3),
