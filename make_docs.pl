@@ -109,8 +109,8 @@ translate1a(A,_,_,A1):-
 
 
 translate2(A,From_lang,To_lang,B) :-
-	(((number(A)->true;(data_symbol(A)))->(A=B));(replace(A,"_"," ",F),
-	get_lang_word3(F,From_lang,To_lang,B))).
+	(((number(A)->true;(data_symbol(A)))->(A=B));(
+	get_lang_word3(A,From_lang,To_lang,B))).
 
 	
 

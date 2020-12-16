@@ -1,8 +1,8 @@
 %% lang_db_generator(Target_language)
 %% New repository, with dbs in each rep
 
-:- include('../culturaltranslationtool/ctt.pl').
-:- include('../culturaltranslationtool/edit.pl').
+%:- include('../culturaltranslationtool/ctt.pl'). % leave these commented out
+%:- include('../culturaltranslationtool/edit.pl'). % "
 :- include('../listprologinterpreter/la_strings').
 
 :- dynamic lang_db/1.
@@ -109,12 +109,14 @@ split_on_number(Input,Input1,Input10),((member([Output2,_Input101,From_lang,Inpu
 	(Input10="" -> Output3=Output2;
 	concat_list([Output2,"",Input10],Output3)))
 	),
-	atom_string(Output,Output3),!.
+	replace(Output3," ","_",Output4),
+	atom_string(Output,Output4),!.
 	
-get_lang_word3(Input,From_lang,To_lang,Output) :-
+get_lang_word3(Input0,From_lang,To_lang,Output) :-
 	From_lang="en",
 	not(To_lang="en"),
 	lang_db(Lang_db),
+	replace(Input0,"_"," ",Input),
 	%(atom(Input)->true;(number(Input))->true;fail),
 	split_on_number(Input,Input1,Input10),((member([Input1,_Input102,To_lang,Output2],Lang_db),
 	%notrace,
@@ -170,7 +172,7 @@ split_on_number(Input,Input1,Input10) :-
 	Input1=Input,Input10="".
 	
 replace(A,Find,Replace,F) :- 	
-	split_string(A,Find,Find,B),findall([C,Replace],(member(C,B)),D),maplist(append,[D],[E]),concat_list(E,F1),string_concat(F," ",F1).
+	split_string(A,Find,Find,B),findall([C,Replace],(member(C,B)),D),maplist(append,[D],[E]),concat_list(E,F1),string_concat(F,G,F1),string_length(G,1).
 
 % stringconcat-> in both algs above
 %	concatenate strings v

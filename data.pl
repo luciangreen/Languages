@@ -70,4 +70,7 @@ trans_alg(Algorithm1,From_lang,To_lang,Algorithm2) :-
 	assertz(from_lang2(From_lang)),
 	retractall(to_lang2(_)),
 	assertz(to_lang2(To_lang)),
+	retractall(lang(_)),
+	assertz(lang(To_lang)),
+	load_lang_db,
 	data([Algorithm1],[],[Algorithm2]),!.
