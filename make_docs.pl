@@ -35,6 +35,8 @@ process1(Input1,To_lang,String1,String2) :-
 	split_string(A,"<>","<>",Input2),
 	process2(Input2,To_lang,String1,String3),
 	term_to_atom(B1,B),
+	retractall(from_lang2(_)),
+	assertz(from_lang2("en")),
 	retractall(to_lang2(_)),
 	assertz(to_lang2(To_lang)),
 	(data([B1],[],[B2])->true;(concat_list(["Error: Couldn't translate list prolog: ",B],N),writeln(N),abort)),
@@ -83,7 +85,7 @@ process2([A|As],To_lang,String1,String2) :-
 process3(Input2,To_lang,String1,String2) :-
 	Input2=[A,B|Rest],
 	translate2(A,"en",To_lang,A1), % 1a,2
-	%translate2(C,"en",To_lang,C1),
+	%translate1a(C,"en",To_lang,C1),
 	%C=C1,
 	concat_list([String1,A1,B],String3),
 writeln("****"),
@@ -100,11 +102,15 @@ process3([A|As],_To_lang,String1,String2) :-
 %term_to_atom2(A,B) :-
 %	term_to_atom(A,C),
 	
-translate1a(A,_,_,A).
+%translate1a(A,_,_,A).
 
-translate2(A,_From_lang,_To_lang,B) :-
-	(number(A)->A=F;replace(A,"_"," ",F)),
-	get_lang_word2(F,B).
+translate1a(A,_,_,A1):-
+	string_concat(A," tr",A1).
+
+
+translate2(A,From_lang,To_lang,B) :-
+	(((number(A)->true;(data_symbol(A)))->(A=B));(replace(A,"_"," ",F),
+	get_lang_word3(F,From_lang,To_lang,B))).
 
 	
 

@@ -76,6 +76,17 @@ Enter target language code for LPI docs:
 
 * Note: The trans shell software has a quota, so it is recommended to translate 60 words of doc.txt at a time by editing it before running.  Lucian Academy does not support using another language and gives no guarantee for the software.
 
+* To translate an algorithm from one language to another:
+
+```
+cd Languages
+swipl
+['make_docs.pl'].
+trans_alg([[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],":-",[[[n,head],[[v,l],[v,h]]],[[n,tail],[[v,l],[v,t]]],[[n,wrap],[[v,h],[v,h1]]],[[n,append],[[v,h1],[v,m],[v,o]]],[[n,reverse],[[v,t],[v,o],[v,n]]]]]],"en","fr",A),writeln1(A).
+
+[[["n","inverser"],[["v","l"],["v","l"]]],[["n","inverser"],[["v","l"],["v","m"],["v","n"]],":-",[[["n","tête"],[["v","l"],["v","h"]]],[["n","queue"],[["v","l"],["v","t"]]],[["n","emballage"],[["v","h"],["v","h 1"]]],[["n","ajouter"],[["v","h 1"],["v","m"],["v","o"]]],[["n","inverser"],[["v","t"],["v","o"],["v","n"]]]]]]
+```
+
 # Versioning
 
 We will use SemVer for versioning.

@@ -91,25 +91,64 @@ load_lang_db :-
 	retractall(lang_db(_)),
  	assertz(lang_db(Entry3)),!.
 
-get_lang_word2(Input,Output) :-
-%% error if word not found
-	lang(Lang),
+get_lang_word3(Input,From_lang,To_lang,Output) :-
+	From_lang="en",
+	To_lang="en",
+	atom_string(Output,Input),!.
+get_lang_word3(Input,From_lang,To_lang,Output) :-
+	not(From_lang="en"),
+	To_lang="en",
+	%(string(Input)->true;(number(Input))->true;fail),
 	lang_db(Lang_db),
-	(Lang="en"->%Input=Output1,
-	atom_string(Output,Input);
-	((%(%((Input="member2"->trace;true),
-	split_on_number(Input,Input1,Input10),((member([Input1,_Input101,Lang,Output2],Lang_db),
+
+split_on_number(Input,Input1,Input10),((member([Output2,_Input101,From_lang,Input1],Lang_db),
+	%notrace,
+	(Input10="" -> Output3=Output2;
+	concat_list([Output2,"",Input10],Output3)))->true;
+	(translate(Input1,From_lang,To_lang,Output2),
+	(Input10="" -> Output3=Output2;
+	concat_list([Output2,"",Input10],Output3)))
+	),
+	atom_string(Output,Output3),!.
+	
+get_lang_word3(Input,From_lang,To_lang,Output) :-
+	From_lang="en",
+	not(To_lang="en"),
+	lang_db(Lang_db),
+	%(atom(Input)->true;(number(Input))->true;fail),
+	split_on_number(Input,Input1,Input10),((member([Input1,_Input102,To_lang,Output2],Lang_db),
 	%notrace,
 	(Input10="" -> Output=Output2;
 	concat_list([Output2," ",Input10],Output)))->true;
-	(translate(Input1,"en",Lang,Output2),
+	(translate(Input1,From_lang,To_lang,Output2),
 	(Input10="" -> Output=Output2;
 	concat_list([Output2," ",Input10],Output)))
-	) %-> true;
+	),
+	%atom_string(Input,Output),!.
+	!.
+	
+get_lang_word3(Input,From_lang,To_lang,Output) :-
+%% error if word not found
+	not(From_lang="en"),
+	not(To_lang="en"),
+
+	%lang(To_lang),
+	lang_db(Lang_db),
+	%((From_lang="en",To_lang="en")->%Input=Output1,
+	%atom_string(Output,Input);
+	%((%(%((Input="member2"->trace;true),
+	split_on_number(Input,Input1,Input10),((member([Input2,_Input101,From_lang,Input1],Lang_db),member([Input2,_Input102,To_lang,Output2],Lang_db),
+	%notrace,
+	(Input10="" -> Output=Output2;
+	concat_list([Output2," ",Input10],Output)))->true;
+	(translate(Input1,From_lang,To_lang,Output2),
+	(Input10="" -> Output=Output2;
+	concat_list([Output2," ",Input10],Output)))
+	), %-> true;
 	
 	%concat_list(["Error: Word: ",Input," not in Language: ",Lang," in lang_db."],_Notification1),%writeln(Notification1),
 	%fail
-	))),
+	%)))),
 	%Output=Output1,
 	!.
 	%atom_string(Output,Output1),!.
