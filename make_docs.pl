@@ -11,6 +11,9 @@
 % v< x > v < x > 
 % v & x &
 
+%translate(A,_,_,_) :-
+%writeln([here,A]),abort.
+
 string(String) --> list(String).
 
 list([]) --> [].

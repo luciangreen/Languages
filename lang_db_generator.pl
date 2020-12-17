@@ -107,17 +107,52 @@ get_lang_word(Input,Output) :-
 %reverse(Output1,[[Input1,Input10]|_]).
 split_on_number(Input,Input1,Input10) :-
 	string_concat(A,B,Input),
-	string_concat(C,_D,B),
+	string_concat(C,D,B),
 	string_length(C,1),
-	%string_concat(E,_F,D),
-	%string_length(E,1),
+	((C=" ",
+	string_concat(E,F,D),
+	string_concat(J,K,E),
+	string_length(K,1),
+	K=" ",
+
+	string_concat(G,_H,F),
+	%trace,
+	string_length(G,1),
+	(number_string(_,G)),%->true;not(G=" ")),
 	%((
 	%C=" ",
-	number_string(_,C),%)->(
-	Input1=A,Input10=B,!.%);
+	%)->(
+	concat_list([A,C,J],Input1),
+	%Input1=A,
+	Input10=F))%->true;
+	%(number_string(_,C),
+	%Input1=A,Input10=B))
+	,!.%);
+split_on_number(Input,Input1,Input10) :-
+	string_concat(A,B,Input),
+	string_concat(C,D,B),
+	string_length(C,1),
+	((C=" ",
+	string_concat(_E,F,D),
+
+	string_concat(G,_H,F),
+	%trace,
+	string_length(G,1),
+
+	(number_string(_,G)),%->true;not(G=" ")),
+	%((
+	%C=" ",
+	%)->(
+	%concat_list([A,C,J],Input1),
+	Input1=A,
+	Input10=F)->true;
+	(number_string(_,C),
+	Input1=A,Input10=B))
+	,!.%);
+
 split_on_number(Input,Input1,Input10) :-
 	Input1=Input,Input10="".
-	
+
 replace(A,Find,Replace,F) :- 	
 	split_string(A,Find,Find,B),findall([C,Replace],(member(C,B)),D),maplist(append,[D],[E]),concat_list(E,F).
 	

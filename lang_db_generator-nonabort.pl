@@ -166,6 +166,50 @@ get_lang_word3(Input,From_lang,To_lang,Output) :-
 %split_on_number(Input,Input1,Input10) :-
 %findall([Input1,Input10],split_on_number1(Input,Input1,Input10),Output1),
 %reverse(Output1,[[Input1,Input10]|_]).
+
+/**
+
+[debug]  ?- split_on_number("en 2",A,B).
+A = "en",
+B = "2".
+
+[debug]  ?- split_on_number("en22",A,B).
+A = "en",
+B = "22".
+
+[debug]  ?- split_on_number("en a 22",A,B).
+A = "en a",
+B = "22".
+
+[debug]  ?- split_on_number("en a",A,B).
+A = "en a",
+B = "".
+
+**/
+
+split_on_number(Input,Input1,Input10) :-
+	string_concat(A,B,Input),
+	string_concat(C,D,B),
+	string_length(C,1),
+	((C=" ",
+	string_concat(E,F,D),
+	string_concat(J,K,E),
+	string_length(K,1),
+	K=" ",
+
+	string_concat(G,_H,F),
+	%trace,
+	string_length(G,1),
+	(number_string(_,G)),%->true;not(G=" ")),
+	%((
+	%C=" ",
+	%)->(
+	concat_list([A,C,J],Input1),
+	%Input1=A,
+	Input10=F))%->true;
+	%(number_string(_,C),
+	%Input1=A,Input10=B))
+	,!.%);
 split_on_number(Input,Input1,Input10) :-
 	string_concat(A,B,Input),
 	string_concat(C,D,B),
@@ -176,14 +220,18 @@ split_on_number(Input,Input1,Input10) :-
 	string_concat(G,_H,F),
 	%trace,
 	string_length(G,1),
-	(number_string(_,G)->true;not(G=" ")),
+
+	(number_string(_,G)),%->true;not(G=" ")),
 	%((
 	%C=" ",
 	%)->(
-	Input1=A,Input10=F)->true;
+	%concat_list([A,C,J],Input1),
+	Input1=A,
+	Input10=F)->true;
 	(number_string(_,C),
 	Input1=A,Input10=B))
 	,!.%);
+
 split_on_number(Input,Input1,Input10) :-
 	Input1=Input,Input10="".
 	
