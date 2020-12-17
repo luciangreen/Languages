@@ -22,6 +22,25 @@ data1(Value1a,Value1b%Value1a,Value2,Value3
 	(translate2(Value1a,From_lang,To_lang,Value1b))), %% translate1a,2
 	%append(Value2,[Value1b],Value3))),
 	!.
+data(Value1,Value2,Value3) :-
+	to_lang2(To_lang),
+	from_lang2(From_lang),
+	get_lang_word3(input,"en",From_lang,I),
+	%trace,
+	Value1=I,%->true;(notrace,fail)),
+
+	get_lang_word3(I,From_lang,To_lang,Value6b),
+	%data1(Value4,Value6),
+	append(Value2,[Value6b],Value3),!.
+data(Value1,Value2,Value3) :-
+	to_lang2(To_lang),
+	from_lang2(From_lang),
+	get_lang_word3(output,"en",From_lang,O),
+	Value1=O,
+	get_lang_word3(O,From_lang,To_lang,Value6b),
+	%data1(Value4,Value6),
+	append(Value2,[Value6b],Value3),!.
+	
 data(Value1a,Value2,Value3) :-
 	%from_lang2(From_lang),
 	%to_lang2(To_lang),
@@ -87,6 +106,17 @@ data(Value1,Value2,Value3) :-
 	get_lang_word3(N,From_lang,To_lang,Value6b),
 	data1(Value4,Value6),
 	append(Value2,[Value6b,Value6],Value3),!.
+
+data(Value1,Value2,Value3) :-
+	to_lang2(To_lang),
+	from_lang2(From_lang),
+	get_lang_word3(t,"en",From_lang,T),
+	Value1=[T,Value4],
+	get_lang_word3(T,From_lang,To_lang,Value6b),
+	data1(Value4,Value6),
+	append(Value2,[Value6b,Value6],Value3),!.
+
+	
 
 data(Value1,Value2,Value3) :-
 	Value1=(Value4=Value4a),
