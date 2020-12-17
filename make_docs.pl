@@ -1,7 +1,7 @@
 % make_docs.pl
 
-:-include('../listprologinterpreter/la_strings.pl').
-:-include('../culturaltranslationtool/ctt.pl'). %
+%:-include('../listprologinterpreter/la_strings.pl'). % leave off
+:-include('../culturaltranslationtool/ctt.pl'). % turn back on
 :-include('data.pl').
 :-include('lang_db_generator-nonabort.pl'). %
 :- include('translate4.pl').

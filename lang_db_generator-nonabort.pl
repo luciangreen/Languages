@@ -3,7 +3,7 @@
 
 %:- include('../culturaltranslationtool/ctt.pl'). % leave these commented out
 %:- include('../culturaltranslationtool/edit.pl'). % "
-:- include('../listprologinterpreter/la_strings').
+%:- include('../listprologinterpreter/la_strings'). % leave off
 
 :- dynamic lang_db/1.
 
@@ -171,9 +171,9 @@ split_on_number(Input,Input1,Input10) :-
 	string_concat(C,D,B),
 	string_length(C,1),
 	((C=" ",
-	string_concat(E,F,D),
+	string_concat(_E,F,D),
 
-	string_concat(G,H,F),
+	string_concat(G,_H,F),
 	%trace,
 	string_length(G,1),
 	(number_string(_,G)->true;not(G=" ")),
