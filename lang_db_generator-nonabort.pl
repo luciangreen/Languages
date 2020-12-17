@@ -212,3 +212,7 @@ get_en_lang_word(Input,Output) :-
 	,fail))),
 	%Output=Output1,
 	!.
+	
+get_lang_word(I,O) :-
+	lang(OL),
+	get_lang_word3(I,"en",OL,O).

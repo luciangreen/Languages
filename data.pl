@@ -48,6 +48,10 @@ data(Value1,Value2,Value3) :-
 	append(Value2,[Value6],Value7),
 	data(Value5,Value7,Value3),!.
 data(Value1,Value2,Value3) :-
+	Value1=[[]|Value5],
+	append(Value2,[[]],Value7),
+	data(Value5,Value7,Value3),!.
+data(Value1,Value2,Value3) :-
 	Value1=[Value4|Value5],
 	data(Value4,[],Value6),
 	append(Value2,Value6,Value7),
