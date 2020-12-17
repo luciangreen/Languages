@@ -98,16 +98,19 @@ get_lang_word3(Input,From_lang,To_lang,Output) :-
 get_lang_word3(Input,From_lang,To_lang,Output) :-
 	not(From_lang="en"),
 	To_lang="en",
+	
+	(From_lang="en2"->Epsilon="";Epsilon=" "),
+
 	%(string(Input)->true;(number(Input))->true;fail),
 	lang_db(Lang_db),
 
 split_on_number(Input,Input1,Input10),((member([Output2,_Input101,From_lang,Input1],Lang_db),
 	%notrace,
 	(Input10="" -> Output3=Output2;
-	concat_list([Output2,"",Input10],Output3)))->true;
+	concat_list([Output2,Epsilon,Input10],Output3)))->true;
 	(translate4(Input1,From_lang,To_lang,Output2),
 	(Input10="" -> Output3=Output2;
-	concat_list([Output2,"",Input10],Output3)))
+	concat_list([Output2,Epsilon,Input10],Output3)))
 	),
 	replace(Output3," ","_",Output4),
 	atom_string(Output,Output4),!.
@@ -115,16 +118,20 @@ split_on_number(Input,Input1,Input10),((member([Output2,_Input101,From_lang,Inpu
 get_lang_word3(Input0,From_lang,To_lang,Output) :-
 	From_lang="en",
 	not(To_lang="en"),
+	
+	%(To_lang="en2"->Epsilon=" ";Epsilon=" "),
+	Epsilon=" ",
+	
 	lang_db(Lang_db),
 	replace(Input0,"_"," ",Input),
 	%(atom(Input)->true;(number(Input))->true;fail),
 	split_on_number(Input,Input1,Input10),((member([Input1,_Input102,To_lang,Output2],Lang_db),
 	%notrace,
 	(Input10="" -> Output=Output2;
-	concat_list([Output2," ",Input10],Output)))->true;
+	concat_list([Output2,Epsilon,Input10],Output)))->true;
 	(translate4(Input1,From_lang,To_lang,Output2),
 	(Input10="" -> Output=Output2;
-	concat_list([Output2," ",Input10],Output)))
+	concat_list([Output2,Epsilon,Input10],Output)))
 	),
 	%atom_string(Input,Output),!.
 	!.
@@ -160,14 +167,22 @@ get_lang_word3(Input,From_lang,To_lang,Output) :-
 %reverse(Output1,[[Input1,Input10]|_]).
 split_on_number(Input,Input1,Input10) :-
 	string_concat(A,B,Input),
-	string_concat(C,_D,B),
+	string_concat(C,D,B),
 	string_length(C,1),
-	%string_concat(E,_F,D),
-	%string_length(E,1),
+	((C=" ",
+	string_concat(E,F,D),
+
+	string_concat(G,H,F),
+	%trace,
+	string_length(G,1),
+	(number_string(_,G)->true;not(G=" ")),
 	%((
 	%C=" ",
-	number_string(_,C),%)->(
-	Input1=A,Input10=B,!.%);
+	%)->(
+	Input1=A,Input10=F)->true;
+	(number_string(_,C),
+	Input1=A,Input10=B))
+	,!.%);
 split_on_number(Input,Input1,Input10) :-
 	Input1=Input,Input10="".
 	
