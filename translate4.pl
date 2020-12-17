@@ -48,7 +48,7 @@ get_lang_word3("membre 1","fr","en2",A).
 A = "member 1".
 
 get_lang_word3("membre 1","fr","en",A).
-A = member_1.
+A = member1.
 
 get_lang_word3("Yes 1","en2","en",A).
 A = 'Yes1'.

@@ -99,8 +99,9 @@ get_lang_word3(Input,From_lang,To_lang,Output) :-
 	not(From_lang="en"),
 	To_lang="en",
 	
-	(From_lang="en2"->Epsilon="";Epsilon=" "),
-
+	%(From_lang="en2"->Epsilon="";Epsilon=" "),
+	Epsilon="",
+	
 	%(string(Input)->true;(number(Input))->true;fail),
 	lang_db(Lang_db),
 
