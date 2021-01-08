@@ -17,6 +17,8 @@ translate4(Input,From_lang,To_lang,Output) :-
 
 /**
 
+need to run test1(off,1,R). to load db before following.
+
 get_lang_word3(member1,"en","en2",A).
 A="member 1".
 
