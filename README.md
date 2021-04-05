@@ -77,6 +77,8 @@ Enter target language code for LPI docs:
 
 * Note: The trans shell software has a quota, so it is recommended to translate 60 words of doc.txt at a time by editing it before running.  Lucian Academy does not support using another language and gives no guarantee for the software.
 
+* You could translate docs.txt into the target language with Google Translate, however please bear in mind that the Google translation of algorithms will not match List Prolog.
+
 * To translate an algorithm from one language to another:
 
 ```
