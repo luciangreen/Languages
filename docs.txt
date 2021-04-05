@@ -168,6 +168,42 @@ test(9,`[[n,grammar1],["aaa"]],`
 ],
 `[[]]`).
 
+# Type Statements
+
+* Functions may have strong types, which check inputted values when calling a function and check all values when exiting a function. So far, any type statement with the name and arity of the function may match data for a call to that function.
+
+* The user may optionally enter types after the query. The following type statement tests number, string and predicate name types.
+
+* Note: Mode statements, described in the next section, are required after Type Statements.
+
+* Type Statements may be recursive (see test 23 in <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a>), i.e. they may repeat until triggering the base case:
+
+test_types_cases(23,`[[n,connect_cliques],[[["a",1],[1,2],[2,"b"]],[["a",3],[3,4],[4,"b"]],[v,output]]]`,
+[
+`[[n,connect_cliques],[[t,list2],[t,list2],[t,list2]]]`,
+`[[t,item],[[t,number]]]`,
+`[[t,item],[[t,string]]]`,
+`[[t,list2],[[[t,list],[[t,item]]]]]`,
+`[[t,list2],[[[t,list],[[t,list2]]]]]`
+],
+`[[[n,connect_cliques],[input,input,output]]]`,
+`[[[n,connect_cliques],[[v,a],[v,b],[v,c]],":-",[[[n,append],[[v,a],[v,b],[v,c]]]]]]`,
+`[[[[v,output],[["a",1],[1,2],[2,"b"],["a",3],[3,4],[4,"b"]]]]]`).
+
+# Mode Statements
+
+* In the following,
+
+test_types_cases(2,`[[n,function],[[v,a],[v,b],[v,c]]]`,
+`[[[n,function],[[t,number],[t,string],[t,predicatename]]]]`,
+`[[[n,function],[output,output,output]]]`,
+[
+`[[n,function],[[v,a],[v,b],[v,c]],":-",[[[n,=],[[v,a],1]],[[n,=],[[v,b],"a"]],[[n,=],[[v,c],[n,a]]]]]`
+],
+`[[[[v,a], 1],[[v,b], "a"],[[v,c], [n,a]]]]`).
+
+* `[[[n,function],[output,output,output]]]`, is the mode statement, which must follow the type statement (although these are optional). The Mode Statement specifies whether each of the variables takes input or gives output.
+
 # Functional List Prolog (FLP)
 
 * List Prolog has an optional functional mode.  In FLP, function calls may be passed as variables and functions may have strong types.
@@ -206,42 +242,6 @@ test_types_cases(7,`[[n,map],[[[n,add],[[[n,add],[[[n,add],[1]]]]]],0,[v,d]]]`,
 ],
 
 `[[[[v,d], 3]]]`).
-
-# Type Statements
-
-* Functions may have strong types, which check inputted values when calling a function and check all values when exiting a function. So far, any type statement with the name and arity of the function may match data for a call to that function.
-
-* The user may optionally enter types after the query. The following type statement tests number, string and predicate name types.
-
-* Note: Mode statements, described in the next section, are required after Type Statements.
-
-* Type Statements may be recursive (see test 23 in <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a>), i.e. they may repeat until triggering the base case:
-
-test_types_cases(23,`[[n,connect_cliques],[[["a",1],[1,2],[2,"b"]],[["a",3],[3,4],[4,"b"]],[v,output]]]`,
-[
-`[[n,connect_cliques],[[t,list2],[t,list2],[t,list2]]]`,
-`[[t,item],[[t,number]]]`,
-`[[t,item],[[t,string]]]`,
-`[[t,list2],[[[t,list],[[t,item]]]]]`,
-`[[t,list2],[[[t,list],[[t,list2]]]]]`
-],
-`[[[n,connect_cliques],[input,input,output]]]`,
-`[[[n,connect_cliques],[[v,a],[v,b],[v,c]],":-",[[[n,append],[[v,a],[v,b],[v,c]]]]]]`,
-`[[[[v,output],[["a",1],[1,2],[2,"b"],["a",3],[3,4],[4,"b"]]]]]`).
-
-# Mode Statements
-
-* In the following,
-
-test_types_cases(2,`[[n,function],[[v,a],[v,b],[v,c]]]`,
-`[[[n,function],[[t,number],[t,string],[t,predicatename]]]]`,
-`[[[n,function],[output,output,output]]]`,
-[
-`[[n,function],[[v,a],[v,b],[v,c]],":-",[[[n,=],[[v,a],1]],[[n,=],[[v,b],"a"]],[[n,=],[[v,c],[n,a]]]]]`
-],
-`[[[[v,a], 1],[[v,b], "a"],[[v,c], [n,a]]]]`).
-
-* `[[[n,function],[output,output,output]]]`, is the mode statement, which must follow the type statement (although these are optional). The Mode Statement specifies whether each of the variables takes input or gives output.
 
 * For other examples (including the list type), please see <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4.pl">lpiverify4.pl</a>, <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a> (for examples with types), <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_open.pl">lpiverify4_open.pl</a> (for examples with open-ended results) and <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_open_types.pl">lpiverify4_open_types.pl</a> (for examples with open-ended results with types).
 
