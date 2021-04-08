@@ -16,7 +16,7 @@ to correct location of <a href="https://github.com/soimort/translate-shell">tran
 
 Download <a href="http://github.com/luciangreen/listprologinterpreter/">this repository</a>, the <a href="https://github.com/luciangreen/Languages">Languages repository</a> and <a href="https://github.com/luciangreen/culturaltranslationtool">Cultural Translation Tool</a> into the same folder.
 
-# 2. Or Installation from List Prolog Package Manager (LPPM)
+# 2. Or Install from List Prolog Package Manager (LPPM)
 
 * Download the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>:
 
@@ -31,8 +31,7 @@ halt
 
 # Running
 
-* Download the repository to your machine.
-In the SWI-Prolog environment, enter:
+* Download the repository to your machine.  In Shell:
 cd listprologinterpreter
 swipl
 ['listprolog'].
