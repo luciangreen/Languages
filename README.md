@@ -2,8 +2,6 @@
 
 Supports international versions of repositories: <a href="https://github.com/luciangreen/listprologinterpreter">List Prolog Interpreter</a>.
 
-So far, French is included.  Please see `listprologinterpreter/languages/fr.txt` for translations of commands and `listprologinterpreter/lpiverify4-fr.pl` for an example in French in LPI.
-
 # Getting Started
 
 Please read the following instructions on how to install the project on your computer for coding in other languages.
