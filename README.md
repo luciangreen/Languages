@@ -52,7 +52,7 @@ halt
 cd Languages
 swipl
 ['lang_db_generator.pl'].
-lang_db_generator("fr",["de","ga"]).
+lang_db_generator("en2",["de","ga"]).
 ```
 to install German (de) and Irish (ga) (in the listprologinterpreter/languages folder, not in the Languages repository).  The French file is used to translate English commands.
 
