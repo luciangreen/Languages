@@ -43,9 +43,7 @@ halt
 `cd listprologinterpreter`
 `['listprolog'].`    
 
-* Running the tests
-To run the test, enter:
-`i_test1(off,1,Passed).`
+* Running the tests: See <a href="https://github.com/luciangreen/listprologinterpreter">List Prolog Interpreter</a>.
 
 # Languages commands
 

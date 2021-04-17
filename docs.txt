@@ -159,7 +159,7 @@ This means "If Statements1 then Statements2, else Statements2a".
 
 * Grammars may be recursive (see test 9 in <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4.pl">lpiverify4.pl</a>), i.e. they may repeat until triggering the base case:
 
-test(9,`[[n,grammar1],["aaa"]],`
+test(9,`[[n,grammar1],["aaa"]]`,
 [
 `[[n,grammar1],[[v,s]],":-",[[[n,noun],[[v,s],""]]]]`,
 `[[n,noun],"->",[""]]`,
@@ -242,6 +242,6 @@ test_types_cases(7,`[[n,map],[[[n,add],[[[n,add],[[[n,add],[1]]]]]],0,[v,d]]]`,
 
 `[[[[v,d], 3]]]`).
 
-* For other examples (including the list type), please see <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4.pl">lpiverify4.pl</a>, <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a> (for examples with types), <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_open.pl">lpiverify4_open.pl</a> (for examples with open-ended results) and <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_open_types.pl">lpiverify4_open_types.pl</a> (for examples with open-ended results with types).
+* For other examples, please see <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4.pl">lpiverify4.pl</a>, <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a> (for examples with types, including the list type), <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_open.pl">lpiverify4_open.pl</a> (for examples with open-ended results) and <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_open_types.pl">lpiverify4_open_types.pl</a> (for examples with open-ended results with types).
 
 * See https://github.com/luciangreen/listprologinterpreter/blob/master/LPI_docs.md for complete List Prolog Documentation.
