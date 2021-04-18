@@ -19,13 +19,13 @@ string(String) --> list(String).
 list([]) --> [].
 list([L|Ls]) --> [L], list(Ls).
 
-make_docs :-
+make_docs(File_a) :-
 	writeln("Enter target language code for LPI docs:"),
 	read_string(user_input, "\n", "\r", _End2, To_lang),
 	retractall(lang(_)),
 	assertz(lang(To_lang)),
 	load_lang_db,
-	phrase_from_file_s(string(Docs), "docs.txt"),
+	phrase_from_file_s(string(Docs), File_a),
 	split_string(Docs,"`","`",Input1),
 	process1(Input1,To_lang,"",String),
 	concat_list([To_lang,".txt"],File),

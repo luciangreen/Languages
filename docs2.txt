@@ -1,0 +1,31 @@
+* The query &test1(off,7,Passed).& tests the reverse predicate:
+test(7,`[[n,reverse],[[1,2,3],[],[v,l]]]`,
+`[[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],":-",[[[n,head],[[v,l],[v,h]]],[[n,tail],[[v,l],[v,t]]],[[n,wrap],[[v,h],[v,h1]]],[[n,append],[[v,h1],[v,m],[v,o]]],[[n,reverse],[[v,t],[v,o],[v,n]]]]]]`,
+`[[[v,l], [3, 2, 1]]]`).
+
+# Documentation
+
+* The interpreter is called in the form:
+&international_interpret([lang,en]&,debug,query,type_statements,mode_statements,functions,result).
+
+Where:
+debug - on or off for trace,
+query - the query e.g. [[n,reverse],[[1,2,3],[],[v,l]]]
+type statements - e.g. [[n,reverse],[[[t,list],[[t,number]]],[[t,list],[[t,number]]],[[t,list],[[t,number]]]]]
+mode statements - e.g. [[n,reverse],[input,input,output]]
+functions - the algorithm e.g. see reverse above
+result - the result, e.g. [[[v,l], [3, 2, 1]]] ([] indicates failed and [[]] indicates the empty list).
+
+* Statements may be negated in the form:
+
+`[[n,not],[statement]]`
+
+* Statements may be connected by the disjunctive (or):
+
+`[[n,or],[statements1,statements2]]`
+
+* If-then statements may either be in the form:
+
+`[[n,"->"],[statements1,statements2]]`
+
+This means "If Statements1 then Statements2".

@@ -1,0 +1,18 @@
+
+* `[[n,append],[variable1,variable2,variable3]]` e.g. `[[n,append],[["a","b"],["c"],[v,d]]]` returns `[v,d]=["a","b","c"]`.  Note: variable2 must be in list form, not e.g. `"c"`, or the command will fail.  Wrap may wrap in [].
+
+* `[[n,stringconcat],[variable1,variable2,variable3]]` e.g. `[[n,stringconcat],["hello ","john",[v,c]]]` returns `[v,c]="hello john"`.
+
+* `[[n,stringtonumber],[variable1,variable2]]` e.g. `[[n,stringtonumber],["3",[v,b]]]` returns `[v,b]=3`
+
+* `[[n,random],[variable1]]` e.g. `[[n,random],[[v,r]]]` returns e.g. `[v,r]=0.19232608946956326`
+
+* `[[n,length],[variable1,variable2]]` e.g. `[[n,length],[[1,2,3],[v,l]]]` returns `[v,l]=3`
+
+* `[[n,ceiling],[variable1,variable2]]` e.g. `[[n,ceiling],[0.19232608946956326,[v,c]]]` returns `[v,c]=1`
+
+* `[[n,date],[year,month,day,hour,minute,seconds]]` e.g. `[[n,date],[[v,year],[v,month],[v,day],[v,hour],[v,minute],[v,second]]]` returns e.g. `[v,year]=2019`, `[v,month]=11`, `[v,day]=6`, `[v,hour]=12`, `[v,minute]=15`, `[v,second]=20.23353409767151`.
+
+* `[[n,sqrt],[variable1,variable2]]` e.g. `[[n,ceiling],[4,[v,c]]]` returns `[v,c]=2`
+
+* `[[n,round],[variable1,variable2]]` e.g. `[[n,round],[1.5,[v,c]]]` returns `[v,c]=2`

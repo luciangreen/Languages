@@ -1,0 +1,31 @@
+
+* Or, if-then statements may be in the form:
+
+`[[n,"->"],[statements1,statements2,statements2a]]`
+
+This means "If Statements1 then Statements2, else Statements2a".
+
+* `[[n,+],[1,2,[v,b]]]` `[v,b]=3`
+* `[[n,-],[1,2,[v,b]]]` `[v,b]=(-1)`
+* `[[n,*],[1,2,[v,b]]]` `[v,b]=2`
+* `[[n,/],[1,2,[v,b]]]` `[v,b]=0.5`
+
+* `[[n,cut]]` - behaves like swipl's ! (doesn't allow backtracking forward or back past it)
+
+* `[[n,true]]` - behaves like true
+
+* `[[n,fail]]` - fails the current predicate
+
+* `[[n,atom],[variable]]`, e.g. `[[n,atom],[[v,a]]]` - returns true if `[v,a]='a'`, an atom
+
+* `[[n,string],[variable]]`, e.g. `[[n,string],[[v,a]]]` - returns true if `[v,a]="a"`, a string
+
+* `[[n,number],[variable]]`, e.g. `[[n,number],[14]]` - returns true where `14` is a number
+
+* `[[n,letters],[variable]]`, e.g. `[[n,letters],["abc"]]` - returns true where `"abc"` is letters
+
+* `[[n,is_operator],[variable1,variable2]]`, where `is_operator=is` or `is_operator="="`, e.g. `[[n,=],[[v,a],1]]` - returns true if `[v,a]=1`
+
+* `[[n,comparison_operator],[variable1,variable2]]`, where comparison_operator=">",">=","<", "=<", "=" or =\= e.g. `[[n,>=],[1,2]]` - returns (1>=2)=false.
+
+* `[[n,equals1],[variable1,[variable2,variable3]]]` e.g. `[[n,equals1],[["a","b"],[[v,a],[v,b]]]]` returns `[v,a]="a"` and `[v,b]="b"`
