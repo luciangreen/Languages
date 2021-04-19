@@ -28,7 +28,7 @@ make_docs(File_a) :-
 	phrase_from_file_s(string(Docs), File_a),
 	split_string(Docs,"`","`",Input1),
 	process1(Input1,To_lang,"",String),
-	concat_list([To_lang,".txt"],File),
+	concat_list([To_lang,"-",File_a,".txt"],File),
 	(open_s(File,write,Stream),
 	write(Stream,String),
 	close(Stream)),
