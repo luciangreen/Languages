@@ -1,0 +1,4 @@
+
+* For other examples, please see <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4.pl">lpiverify4.pl</a>, <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a> (for examples with types, including the list type), <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_open.pl">lpiverify4_open.pl</a> (for examples with open-ended results) and <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_open_types.pl">lpiverify4_open_types.pl</a> (for examples with open-ended results with types).
+
+* See https://github.com/luciangreen/listprologinterpreter/blob/master/LPI_docs.md for complete List Prolog Documentation.

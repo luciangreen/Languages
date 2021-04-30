@@ -67,11 +67,13 @@ make_docs("docs3.txt").
 make_docs("docs4.txt").
 make_docs("docs5.txt").
 make_docs("docs6.txt").
+make_docs("docs6-1.txt").
 make_docs("docs7.txt").
 make_docs("docs8.txt").
 make_docs("docs9.txt").
 make_docs("docs10.txt").
 make_docs("docs11.txt").
+make_docs("docs12.txt").
 ```
 
 The following is displayed, and the user enters a language code (installed from the previous step):
