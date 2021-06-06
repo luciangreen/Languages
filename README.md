@@ -61,13 +61,14 @@ to install German (de) and Irish (ga) (in the listprologinterpreter/languages fo
 cd Languages
 swipl
 ['make_docs.pl'].
-make_docs("docs1.txt"). % run each of the following lines every few hours
+make_docs("docs1.txt"). % run one of the following lines every few hours
 make_docs("docs2.txt").
 make_docs("docs3.txt").
 make_docs("docs4.txt").
 make_docs("docs5.txt").
 make_docs("docs6.txt").
 make_docs("docs6-1.txt").
+make_docs("docs6-2.txt").
 make_docs("docs7.txt").
 make_docs("docs8.txt").
 make_docs("docs9.txt").
