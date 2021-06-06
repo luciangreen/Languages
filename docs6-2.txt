@@ -2,7 +2,7 @@
         [[[n,member2a],[input,output]]],
 [[[n,member2a],[[v,a],[v,b]],":-",
         [       [[n,member2],[[v,a],[v,b]]]]
-        ]]]]` returns `[v,b]="a"`, where `same` means the same lang or debug as the parent predicate.
+        ]]]]` returns `[v,b]="a"`. (See call(2) above for possible values of Lang and Debug.)
 
 * `[[n,trace]]` switches on trace (debug) mode.
 
