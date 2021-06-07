@@ -56,6 +56,14 @@ lang_db_generator("en2",["de","ga"]).
 ```
 to install German (de) and Irish (ga) (in the listprologinterpreter/languages folder, not in the Languages repository).  The English2 file is used to translate English commands.
 
+* To generate LPI documentation in language "en2" (i.e. "concatenate strings" instead of "stringconcat"):
+```
+cd Languages
+swipl
+['make_docs.pl'].
+make_docs("docs_full.txt").
+```
+
 * To generate LPI documentation in a language:
 ```
 cd Languages
