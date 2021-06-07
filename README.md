@@ -69,7 +69,8 @@ make_docs("docs_full.txt").
 cd Languages
 swipl
 ['make_docs.pl'].
-make_docs("docs1.txt"). % run one of the following lines every few hours
+% run one of the following lines every few hours
+make_docs("docs1.txt"). 
 make_docs("docs2.txt").
 make_docs("docs3.txt").
 make_docs("docs4.txt").
