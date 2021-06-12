@@ -29,7 +29,8 @@ make_docs(File_a) :-
 	string_codes(Docs2,Docs),
 	split_string1(Docs2,["`"],Input1),
 	process1(Input1,To_lang,"",String),
-	concat_list([To_lang,"-",File_a,".txt"],File),
+	concat_list([To_lang,"-",File_a%,".txt"
+	],File),
 	(open_s(File,write,Stream),
 	write(Stream,String),
 	close(Stream)),
