@@ -18,7 +18,7 @@ string(String) --> list(String).
 
 list([]) --> [].
 list([L|Ls]) --> [L], list(Ls).
-
+	
 make_docs(File_a) :-
 	writeln("Enter target language code for LPI docs:"),
 	read_string(user_input, "\n", "\r", _End2, To_lang),
@@ -26,7 +26,8 @@ make_docs(File_a) :-
 	assertz(lang(To_lang)),
 	load_lang_db,
 	phrase_from_file_s(string(Docs), File_a),
-	split_string(Docs,"`","`",Input1),
+	string_codes(Docs2,Docs),
+	split_string1(Docs2,["`"],Input1),
 	process1(Input1,To_lang,"",String),
 	concat_list([To_lang,"-",File_a,".txt"],File),
 	(open_s(File,write,Stream),
@@ -36,7 +37,7 @@ make_docs(File_a) :-
 
 process1(Input1,To_lang,String1,String2) :-
 	Input1=[A,B|Rest],
-	split_string(A,"<>","<>",Input2),
+	split_string1(A,["<",">"],Input2),
 	process2(Input2,To_lang,String1,String3),
 	catch(term_to_atom(B1,B), _, (concat_list(["Error: Couldn't translate list prolog: ",B],N),writeln(N),abort)),
 	retractall(from_lang2(_)),
@@ -67,9 +68,9 @@ process1([A|As],_To_lang,String1,String2) :-
 % v< x > v < x > 
 process2(Input2,To_lang,String1,String2) :-
 	Input2=[A,B,C,D|Rest],
-	split_string(A,"&","&",A11), % docs.txt needs a character between `,<,>,&
+	split_string1(A,["&"],A11), % docs.txt needs a character between `,<,>,&
 	process3(A11,To_lang,"",A1),
-	split_string(C,"&","&",C11),
+	split_string1(C,["&"],C11),
 	process3(C11,To_lang,"",C1),
 	concat_list([String1,A1,"<",B,">",C1,"<",D,">"],String3),
 writeln("****"),
@@ -77,7 +78,7 @@ writeln(String3),
 	process2(Rest,To_lang,String3,String2),!.
 process2([],_To_lang,String,String) :- !.
 process2([A|As],To_lang,String1,String2) :- 
-	split_string(A,"&","&",A11), % docs.txt needs a character between `,<,>,&
+	split_string1(A,["&"],A11), % docs.txt needs a character between `,<,>,&
 	process3(A11,To_lang,"",A1),
 
 	%term_to_atom(A,A1),

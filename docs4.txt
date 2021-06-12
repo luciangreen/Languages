@@ -1,4 +1,3 @@
-
 * `[[n,equals2],[variable1,[variable2,variable3]]]` e.g. `[[n,equals2],[[v,a],["a","b"]]]` returns `[v,a]=["a","b"]`
 
 * `[[n,equals3],[variable1,variable2]]` e.g. `[[n,equals3],[[v,a],[1,2,3]]]` returns `[v,a]=[1,2,3]`

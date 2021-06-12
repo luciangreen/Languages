@@ -60,7 +60,7 @@ to install German (de) and Irish (ga) (in the listprologinterpreter/languages fo
 ```
 cd Languages
 swipl
-['make_docs.pl'].
+['../listprologinterpreter/listprolog.pl'].
 make_docs("docs_full.txt").
 ```
 

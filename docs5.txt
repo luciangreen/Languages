@@ -1,4 +1,3 @@
-
 * `[[n,append],[variable1,variable2,variable3]]` e.g. `[[n,append],[["a","b"],["c"],[v,d]]]` returns `[v,d]=["a","b","c"]`.  Note: variable2 must be in list form, not e.g. `"c"`, or the command will fail.  Wrap may wrap in [].
 
 * `[[n,stringconcat],[variable1,variable2,variable3]]` e.g. `[[n,stringconcat],["hello ","john",[v,c]]]` returns `[v,c]="hello john"`.

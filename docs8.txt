@@ -1,4 +1,3 @@
-
 # Type Statements
 
 * Functions may have strong types, which check inputted values when calling a function and check all values when exiting a function. So far, any type statement with the name and arity of the function may match data for a call to that function.

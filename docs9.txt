@@ -1,4 +1,3 @@
-
 # Mode Statements
 
 * In the following,
@@ -26,6 +25,3 @@ test_types_cases(7,`[[n,map],[[[n,add],[[[n,add],[[[n,add],1]]]]],0,[v,d]]]`,
 `[[n,map],[[[t,brackets],[[t,predicatename],[t,number]]],[t,number],[t,number]]]`,
         
 `[[n,map],[[[t,brackets],[[t,predicatename],[[t,brackets],[[t,any]]]]],[t,number],[t,number]]]`,
-        
-
-
