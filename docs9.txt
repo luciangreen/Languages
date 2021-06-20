@@ -18,10 +18,10 @@ test_types_cases(2,`[[n,function],[[v,a],[v,b],[v,c]]]`,
 
 * Functional algorithms may be recursive (see test 7 in <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a>), i.e. they may repeat until triggering the base case:
 
-test_types_cases(7,`[[n,map],[[[n,add],[[[n,add],[[[n,add],1]]]]],0,[v,d]]]`,
+test_types_cases(7,`[[n,map],[[[n,add],[[[n,add],[[[n,add],[1]]]]]],0,[v,d]]]`,
 [
-`[[n,map],[[t,number],[t,number],[t,number]]]`,
+`[[n,map],[[t,map1],[t,number],[t,number]]]`,
         
-`[[n,map],[[[t,brackets],[[t,predicatename],[t,number]]],[t,number],[t,number]]]`,
+`[[t,map1],[[t,number]]]`,
         
-`[[n,map],[[[t,brackets],[[t,predicatename],[[t,brackets],[[t,any]]]]],[t,number],[t,number]]]`,
+`[[t,map1],[[[t,brackets],[[t,predicatename],[[t,brackets],[[t,map1]]]]]]]`,
