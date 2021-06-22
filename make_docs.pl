@@ -5,6 +5,7 @@
 :-include('data.pl').
 :-include('lang_db_generator-nonabort.pl'). %
 :- include('translate4.pl').
+:- include('../Prolog-to-List-Prolog/pretty_print.pl').
 
 % translates list prolog code between ``
 % in the following, translates v, doesn't translate x
@@ -47,7 +48,12 @@ process1(Input1,To_lang,String1,String2) :-
 	assertz(to_lang2(To_lang)),
 	(data([B1],[],[B2])->true;(concat_list(["Error: Couldn't translate list prolog: ",B],N),writeln(N),abort)),
 	%trace,
-	catch(term_to_atom(B2,B3), _, (concat_list(["Error: Couldn't translate list prolog: ",B3],N_A),writeln(N_A),abort)), % change back to not with catch
+	
+	%trace,
+	%writeln1(B2),
+	
+	catch(%term_to_atom
+	pretty_print(B2,B3), _, (concat_list(["Error: Couldn't translate list prolog: ",B3],N_A),writeln(N_A),abort)), % change back to not with catch
 
 	concat_list([String3,"`",B3,"`"],String4),
 writeln("****"),

@@ -9,13 +9,13 @@
 * Type Statements may be recursive (see test 23 in <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a>), i.e. they may repeat until triggering the base case:
 
 test_types_cases(23,`[[n,connect_cliques],[[["a",1],[1,2],[2,"b"]],[["a",3],[3,4],[4,"b"]],[v,output]]]`,
-[
-`[[n,connect_cliques],[[t,list2],[t,list2],[t,list2]]]`,
-`[[t,item],[[t,number]]]`,
-`[[t,item],[[t,string]]]`,
-`[[t,list2],[[[t,list],[[t,item]]]]]`,
-`[[t,list2],[[[t,list],[[t,list2]]]]]`
-],
+`[
+[[n,connect_cliques],[[t,list2],[t,list2],[t,list2]]],
+[[t,item],[[t,number]]],
+[[t,item],[[t,string]]],
+[[t,list2],[[[t,list],[[t,item]]]]],
+[[t,list2],[[[t,list],[[t,list2]]]]]
+]`,
 `[[[n,connect_cliques],[input,input,output]]]`,
 `[[[n,connect_cliques],[[v,a],[v,b],[v,c]],":-",[[[n,append],[[v,a],[v,b],[v,c]]]]]]`,
 `[[[[v,output],[["a",1],[1,2],[2,"b"],["a",3],[3,4],[4,"b"]]]]]`).

@@ -49,7 +49,6 @@ test(7,`[[n,reverse],[[1,2,3],[],[v,l]]]`,
 `[[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],":-",[[[n,head],[[v,l],[v,h]]],[[n,tail],[[v,l],[v,t]]],[[n,wrap],[[v,h],[v,h1]]],[[n,append],[[v,h1],[v,m],[v,o]]],[[n,reverse],[[v,t],[v,o],[v,n]]]]]]`,
 `[[[v,l], [3, 2, 1]]]`).
 
-
 # Documentation
 
 * The interpreter is called in the form:
@@ -205,13 +204,13 @@ test(9,`[[n,grammar1],["aaa"]]`,
 * Type Statements may be recursive (see test 23 in <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a>), i.e. they may repeat until triggering the base case:
 
 test_types_cases(23,`[[n,connect_cliques],[[["a",1],[1,2],[2,"b"]],[["a",3],[3,4],[4,"b"]],[v,output]]]`,
-[
-`[[n,connect_cliques],[[t,list2],[t,list2],[t,list2]]]`,
-`[[t,item],[[t,number]]]`,
-`[[t,item],[[t,string]]]`,
-`[[t,list2],[[[t,list],[[t,item]]]]]`,
-`[[t,list2],[[[t,list],[[t,list2]]]]]`
-],
+`[
+[[n,connect_cliques],[[t,list2],[t,list2],[t,list2]]],
+[[t,item],[[t,number]]],
+[[t,item],[[t,string]]],
+[[t,list2],[[[t,list],[[t,item]]]]],
+[[t,list2],[[[t,list],[[t,list2]]]]]
+]`,
 `[[[n,connect_cliques],[input,input,output]]]`,
 `[[[n,connect_cliques],[[v,a],[v,b],[v,c]],":-",[[[n,append],[[v,a],[v,b],[v,c]]]]]]`,
 `[[[[v,output],[["a",1],[1,2],[2,"b"],["a",3],[3,4],[4,"b"]]]]]`).
@@ -236,42 +235,44 @@ test_types_cases(2,`[[n,function],[[v,a],[v,b],[v,c]]]`,
 
 * Functional algorithms may be recursive (see test 7 in <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a>), i.e. they may repeat until triggering the base case:
 
-test_types_cases(7,`[[n,map],[[[n,add],[[[n,add],[[[n,add],[1]]]]]],0,[v,d]]]`,
-[
-`[[n,map],[[t,map1],[t,number],[t,number]]]`,
+
+test_types_cases(7,
+`[[n,map],[[[n,add],[[[n,add],[[[n,add],[1]]]]]],0,[v,d]]]`,
+
+`[
+[[n,map],[[t,map1],[t,number],[t,number]]],
         
-`[[t,map1],[[t,number]]]`,
+[[t,map1],[[t,number]]],
         
-`[[t,map1],[[[t,brackets],[[t,predicatename],[[t,brackets],[[t,map1]]]]]]]`,
+[[t,map1],[[[t,brackets],[[t,predicatename],[[t,brackets],[[t,map1]]]]]]],
 
-`[[n,add],[[t,number],[t,number],[t,number]]]`,
+[[n,add],[[t,number],[t,number],[t,number]]],
 
-`[[n,getitemn],[[t,number],[[t,list],[[t,any]]],[t,any]]]`
-],
+[[n,getitemn],[[t,number],[[t,list],[[t,any]]],[t,any]]]
+]`,
 
-[
-`[[n,map],[input,input,output]]`,
+`[
+[[n,map],[input,input,output]],
                 
-`[[n,add],[input,input,output]]`,
+[[n,add],[input,input,output]],
         
-`[[n,getitemn],[input,input,output]]`
-],
+[[n,getitemn],[input,input,output]]
+]`,
+`[
+[[n,map],[[v,f1],[v,n1],[v,n]],":-",[[[n,number],[[v,f1]]],[[n,add],[[v,n1],[v,f1],[v,n]]]]],       
 
-[
-`[[n,map],[[v,f1],[v,n1],[v,n]],":-",[[[n,number],[[v,f1]]],[[n,add],[[v,n1],[v,f1],[v,n]]]]]`,       
+[[n,map],[[v,f1],[v,l],[v,n]],":-",[[[n,equals1],[[v,f1],[[v,f11],[v,f12]]]],[[n,=],[[v,f11],[n,add]]],[[n,getitemn],[1,[v,f12],[v,bb]]],[[v,f11],[[v,l],1,[v,l2]]],[[n,map],[[v,bb],[v,l2],[v,n]]]]],
 
-`[[n,map],[[v,f1],[v,l],[v,n]],":-",[[[n,equals1],[[v,f1],[[v,f11],[v,f12]]]],[[n,=],[[v,f11],[n,add]]],[[n,getitemn],[1,[v,f12],[v,bb]]],[[v,f11],[[v,l],1,[v,l2]]],[[n,map],[[v,bb],[v,l2],[v,n]]]]]`,
+[[n,add],[[v,a],[v,b],[v,c]],":-",[[n,+],[[v,a],[v,b],[v,c]]]],
 
-`[[n,add],[[v,a],[v,b],[v,c]],":-",[[n,+],[[v,a],[v,b],[v,c]]]]`,
-
-`[[n,getitemn],[1,[v,b],[v,c]],":-",[[n,head],[[v,b],[v,c]]]]`,
+[[n,getitemn],[1,[v,b],[v,c]],":-",[[n,head],[[v,b],[v,c]]]],
         
-`[[n,getitemn],[[v,a],[v,b],[v,c]],":-",[[[n,not],[[[n,=],[[v,a],1]]]],[[n,tail],[[v,b],[v,t]]],[[n,-],[[v,a],1,[v,d]]],[[n,getitemn],[[v,d],[v,t],[v,c]]]]]`
-],
+[[n,getitemn],[[v,a],[v,b],[v,c]],":-",[[[n,not],[[[n,=],[[v,a],1]]]],[[n,tail],[[v,b],[v,t]]],[[n,-],[[v,a],1,[v,d]]],[[n,getitemn],[[v,d],[v,t],[v,c]]]]]
+]`,
 
-`[[[[v,d], 4]]]`).
-
-
+`[[[[v,d], 4]]]`
+).
 * For other examples, please see <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4.pl">lpiverify4.pl</a>, <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_types.pl">lpiverify4_types.pl</a> (for examples with types, including the list type), <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_open.pl">lpiverify4_open.pl</a> (for examples with open-ended results) and <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/lpiverify4_open_types.pl">lpiverify4_open_types.pl</a> (for examples with open-ended results with types).
 
 * See https://github.com/luciangreen/listprologinterpreter/blob/master/LPI_docs.md for complete List Prolog Documentation.
+
