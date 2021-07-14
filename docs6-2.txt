@@ -8,4 +8,6 @@
 
 * `[[n,notrace]]` switches off trace (debug) mode.
 
-* `[[n,get_lang_word],[Variable1,Variable2]` e.g. `[n,get_lang_word],["get_lang_word",[v,word]]` returns `[v,word]="get_lang_word"`.
+* `[[n,get_lang_word],[Variable1,Variable2]` e.g. `[[n,get_lang_word],["get_lang_word",[v,word]]]` returns `[v,word]="get_lang_word"`.
+
+* `[[n,member3],[Variable1,Variable2]` e.g. `[[n,member3],[[[v,a],"|",[[v,b]]],[[1,1],[1,2],[1,3]]]]` returns `[v,a]=1`, `[v,b]=1`, etc. where Variable1 may be in any pattern.
