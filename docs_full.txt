@@ -179,6 +179,8 @@ This means "If Statements1 then Statements2, else Statements2a".
 
 * `[[n,notrace]]` switches off trace (debug) mode.
 
+* `[[n,get_lang_word],[Variable1,Variable2]` e.g. `[n,get_lang_word],["get_lang_word",[v,word]]` returns `[v,word]="get_lang_word"`.
+
 # Grammars
 
 * List Prolog supports grammars, for example:
