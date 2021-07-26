@@ -82,7 +82,7 @@ translate1(A,_,_,A).
 load_lang_db :-
 %% error if lang not found
 	load_lang_db1(Entry3),
-	lang(Lang),
+	(not(lang(Lang))->(Lang="en");lang(Lang)),
 	(Lang="en"->true;
 	(member([_,_,Lang,_],Entry3)->true;
 	(concat_list(["Error: Language: ",Lang," not in listprologinterpreter/languages folder."],_Notification1)%,writeln(Notification1)
@@ -103,7 +103,8 @@ get_lang_word3(Input,From_lang,To_lang,Output) :-
 	Epsilon="",
 	
 	%(string(Input)->true;(number(Input))->true;fail),
-	lang_db(Lang_db),
+	%lang_db(Lang_db),
+	(not(lang_db(Lang_db))->(load_lang_db,lang_db(Lang_db));lang_db(Lang_db)),
 
 split_on_number(Input,Input1,Input10),((member([Output2,_Input101,From_lang,Input1],Lang_db),
 	%notrace,
@@ -123,7 +124,8 @@ get_lang_word3(Input0,From_lang,To_lang,Output) :-
 	%(To_lang="en2"->Epsilon=" ";Epsilon=" "),
 	Epsilon=" ",
 	
-	lang_db(Lang_db),
+	%lang_db(Lang_db),
+	(not(lang_db(Lang_db))->(load_lang_db,lang_db(Lang_db));lang_db(Lang_db)),
 	replace(Input0,"_"," ",Input),
 	%(atom(Input)->true;(number(Input))->true;fail),
 	split_on_number(Input,Input1,Input10),((member([Input1,_Input102,To_lang,Output2],Lang_db),
@@ -143,7 +145,8 @@ get_lang_word3(Input,From_lang,To_lang,Output) :-
 	not(To_lang="en"),
 
 	%lang(To_lang),
-	lang_db(Lang_db),
+	%lang_db(Lang_db),
+	(not(lang_db(Lang_db))->(load_lang_db,lang_db(Lang_db));lang_db(Lang_db)),
 	%((From_lang="en",To_lang="en")->%Input=Output1,
 	%atom_string(Output,Input);
 	%((%(%((Input="member2"->trace;true),
@@ -262,5 +265,5 @@ get_en_lang_word(Input,Output) :-
 	!.
 	
 get_lang_word(I,O) :-
-	lang(OL),
+	(not(lang(OL))->(OL="en");lang(OL)),
 	get_lang_word3(I,"en",OL,O).

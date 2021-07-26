@@ -88,8 +88,9 @@ load_lang_db :-
 
 get_lang_word(Input,Output) :-
 %% error if word not found
-	lang(Lang),
-	lang_db(Lang_db),
+	(not(lang(Lang))->(Lang="en");lang(Lang)),
+	%lang_db(Lang_db),
+	(not(lang_db(Lang_db))->(load_lang_db,lang_db(Lang_db));lang_db(Lang_db)),
 	(Lang="en"->%Input=Output1,
 	atom_string(Output,Input);
 	((%(%((Input="member2"->trace;true),
