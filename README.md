@@ -104,7 +104,7 @@ swipl
 ['make_docs.pl'].
 trans_alg([[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],":-",[[[n,head],[[v,l],[v,h]]],[[n,tail],[[v,l],[v,t]]],[[n,wrap],[[v,h],[v,h1]]],[[n,append],[[v,h1],[v,m],[v,o]]],[[n,reverse],[[v,t],[v,o],[v,n]]]]]],"en","fr",A),writeln1(A).
 
-[[["n","inverser"],[["v","l"],["v","l"]]],[["n","inverser"],[["v","l"],["v","m"],["v","n"]],":-",[[["n","tête"],[["v","l"],["v","h"]]],[["n","queue"],[["v","l"],["v","t"]]],[["n","emballage"],[["v","h"],["v","h 1"]]],[["n","ajouter"],[["v","h 1"],["v","m"],["v","o"]]],[["n","inverser"],[["v","t"],["v","o"],["v","n"]]]]]]
+[[["n","inverser"],[[],["v","l"],["v","l"]]],[["n","inverser"],[["v","l"],["v","m"],["v","n"]],":-",[[["n","tête"],[["v","l"],["v","h"]]],[["n","queue"],[["v","l"],["v","t"]]],[["n","emballage"],[["v","h"],["v","h 1"]]],[["n","ajouter"],[["v","h 1"],["v","m"],["v","o"]]],[["n","inverser"],[["v","t"],["v","o"],["v","n"]]]]]]
 ```
 
 * Note: When translating an algorithm from another language to English, it is better to avoid errors from capitalised strings by using the language code "en2" rather than "en", i.e.
@@ -112,7 +112,7 @@ trans_alg([[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],":-",
 ```
 trans_alg([[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],":-",[[[n,head],[[v,l],[v,h]]],[[n,tail],[[v,l],[v,t]]],[[n,wrap],[[v,h],[v,h1]]],[[n,append],[[v,h1],[v,m],[v,o]]],[[n,reverse],[[v,t],[v,o],[v,n]]]]]],"en","en2",A),writeln1(A).
 
-[[["n","reverse"],[["v","l"],["v","l"]]],[["n","reverse"],[["v","l"],["v","m"],["v","n"]],":-",[[["n","head"],[["v","l"],["v","h"]]],[["n","tail"],[["v","l"],["v","t"]]],[["n","wrap"],[["v","h"],["v","h 1"]]],[["n","append"],[["v","h 1"],["v","m"],["v","o"]]],[["n","reverse"],[["v","t"],["v","o"],["v","n"]]]]]]
+[[["n","reverse"],[[],["v","l"],["v","l"]]],[["n","reverse"],[["v","l"],["v","m"],["v","n"]],":-",[[["n","head"],[["v","l"],["v","h"]]],[["n","tail"],[["v","l"],["v","t"]]],[["n","wrap"],[["v","h"],["v","h 1"]]],[["n","append"],[["v","h 1"],["v","m"],["v","o"]]],[["n","reverse"],[["v","t"],["v","o"],["v","n"]]]]]]
 ```
 
 # Versioning
