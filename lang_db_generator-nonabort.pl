@@ -266,4 +266,4 @@ get_en_lang_word(Input,Output) :-
 	
 get_lang_word(I,O) :-
 	(not(lang(OL))->(OL="en");lang(OL)),
-	get_lang_word3(I,"en",OL,O).
+	get_lang_word3(I,"en",OL,O),!.
