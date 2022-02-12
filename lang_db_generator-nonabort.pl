@@ -267,3 +267,11 @@ get_en_lang_word(Input,Output) :-
 get_lang_word(I,O) :-
 	(not(lang(OL))->(OL="en");lang(OL)),
 	get_lang_word3(I,"en",OL,O),!.
+	
+reserved_word(Word) :-
+	lang(Lang)	,
+	lang_db(Lang_db), 
+	(Lang="en"->(member([Word1,_,_,_],Lang_db),
+	atom_string(Word,Word1));
+	member([_,_,_,Word],Lang_db)).
+	
