@@ -239,7 +239,7 @@ split_on_number(Input,Input1,Input10) :-
 	Input1=Input,Input10="".
 	
 replace(A,Find,Replace,F) :- 	
-	split_string(A,Find,Find,B),findall([C,Replace],(member(C,B)),D),maplist(append,[D],[E]),concat_list(E,F1),string_concat(F,G,F1),string_length(G,1).
+	split_string(A,Find,Find,B),findall([C,Replace],(member(C,B)),D),maplist(append,[D],[E]),concat_list(E,F1),string_concat(F,G,F1),string_length(G,1),!.
 
 % stringconcat-> in both algs above
 %	concatenate strings v
