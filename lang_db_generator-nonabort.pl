@@ -275,3 +275,29 @@ reserved_word(Word) :-
 	atom_string(Word,Word1));
 	member([_,_,_,Word],Lang_db)).
 	
+/*
+reserved_word2(Word) :-
+	lang(Lang)	,
+	lang_db(Lang_db), 
+ split_on_number(Word,Output21,_),
+	atom_string(Output21,Output2),
+ member([Output2,_Input101,_Lang,_Input1],Lang_db),
+ not(Output21="query_box"),
+ !.
+*/
+
+% reserved word - membre2 -> member2 (in list)
+% (translate to en, check list)
+
+reserved_word2(Word) :-
+ lang(Lang)	,
+ lang_db(Lang_db), 
+ get_lang_word3(Word,Lang,"en",Word2),
+ atom_string(Word2,Word3),
+ reserved_words2(Reserved_words),
+ (member(Word3,Reserved_words)->true;
+ (fail%
+ %writeln1([not_reserved_word,Word3]),fail
+ )),!.
+
+% not query_box
