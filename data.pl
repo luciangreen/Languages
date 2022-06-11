@@ -147,6 +147,16 @@ data(Value1,Value2,Value3) :-
 	append(Value2,Value6,Value7),
 	data(Value5,Value7,Value3),!.
 
+data(Value1,Value2,Value3b) :-
+
+curly_head_taila(Value1,Value4,Value5),
+%trace,
+	data([Value4],[],Value6),
+	append(Value2,Value6,Value7),
+	data(Value5,Value7,Value3),
+		curly_square(Value3a,[Value3]),
+				[Value3a]=Value3b,!.
+
 data_symbol(":-").
 data_symbol("->").
 data_symbol("|").
