@@ -11,7 +11,7 @@ test(7,`[[n,reverse],[[1,2,3],[],[v,l]]]`,
 Where:
 debug - on or off for trace,
 query - the query e.g. [[n,reverse],[[1,2,3],[],[v,l]]]
-type statements - e.g. [[n,reverse],[[[t,list],[[t,number]]],[[t,list],[[t,number]]],[[t,list],[[t,number]]]]]
+type statements - e.g. [[n,reverse],[{[t, number]}, {[t, number]}, {[t, number]}]]
 mode statements - e.g. [[n,reverse],[input,input,output]]
 functions - the algorithm e.g. see reverse above
 result - the result, e.g. [[[v,l], [3, 2, 1]]] ([] indicates failed and [[]] indicates the empty list).

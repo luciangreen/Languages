@@ -3,14 +3,10 @@ test_types_cases(7,
 
 `[
 [[n,map],[[t,map1],[t,number],[t,number]]],
-        
 [[t,map1],[[t,number]]],
-        
-[[t,map1],[[[t,brackets],[[t,predicatename],[[t,brackets],[[t,map1]]]]]]],
-
+[[t,map1],[[[t,predicatename],[[t,map1]]]]],
 [[n,add],[[t,number],[t,number],[t,number]]],
-
-[[n,getitemn],[[t,number],[[t,list],[[t,any]]],[t,any]]]
+[[n,getitemn],[[t,number],{[t,any]},[t,any]]]
 ]`,
 
 `[

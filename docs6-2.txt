@@ -1,4 +1,4 @@
-* (3) `[[n,call],[[lang,Lang],Debug,[Function,Arguments],Types,Modes,Functions]]` e.g. `[[n,call],[[lang,same],same,[[n,member2a],[["a","b","c"],[v,b]]],  [[[n,member2a],[[[t,brackets],[[t,number],[t,number],[t,number]]],[t,number]]]],
+* (3) `[[n,call],[[lang,Lang],Debug,[Function,Arguments],Types,Modes,Functions]]` e.g. `[[n,call],[[lang,same],same,[[n,member2a],[["a","b","c"],[v,b]]],  [[[n,member2a],[[[t, number], [t, number], [t, number]], [t, number]]]],
         [[[n,member2a],[input,output]]],
 [[[n,member2a],[[v,a],[v,b]],":-",
         [       [[n,member2],[[v,a],[v,b]]]]
