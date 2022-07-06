@@ -291,7 +291,7 @@ reserved_word2(Word) :-
 
 reserved_word2(Word) :-
  lang(Lang)	,
- lang_db(Lang_db), 
+ %lang_db(Lang_db), 
  get_lang_word3(Word,Lang,"en",Word2),
  atom_string(Word2,Word3),
  reserved_words2(Reserved_words),
