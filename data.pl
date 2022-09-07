@@ -22,6 +22,21 @@ data1(Value1a,Value1b%Value1a,Value2,Value3
 	(translate2(Value1a,From_lang,To_lang,Value1b))), %% translate1a,2
 	%append(Value2,[Value1b],Value3))),
 	!.
+data([Value1],Value2,Value3) :-
+ var(Value1),
+	append(Value2,[Value1],Value3),!.
+data(Value1,Value2,Value3) :-
+%trace,
+	to_lang2(To_lang),
+	from_lang2(From_lang),
+	get_lang_word3(v,"en",From_lang,V),
+	Value1=[V,Value4],
+	get_lang_word3(V,From_lang,To_lang,Value6b),
+	data(Value4,_,Value6),
+	(var(Value6)->(Value6c=Value6,Value6c1=[]);Value6=[Value6c|Value6c1]),
+	foldr(append,[[Value6b],[Value6c],Value6c1],Value6d),
+	append(Value2,Value6d,Value3),!.
+	
 data(Value1,Value2,Value3) :-
 	to_lang2(To_lang),
 	from_lang2(From_lang),
@@ -90,14 +105,6 @@ data(Value1,Value2,Value3) :-
 	data(Value4a,[],[Value6a])),
 	append(Value2,[[Value6b,Value6]=Value6a],Value3),!.
 
-data(Value1,Value2,Value3) :-
-	to_lang2(To_lang),
-	from_lang2(From_lang),
-	get_lang_word3(v,"en",From_lang,V),
-	Value1=[V,Value4],
-	get_lang_word3(V,From_lang,To_lang,Value6b),
-	data1(Value4,Value6),
-	append(Value2,[Value6b,Value6],Value3),!.
 data(Value1,Value2,Value3) :-
 	to_lang2(To_lang),
 	from_lang2(From_lang),
