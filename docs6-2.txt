@@ -1,7 +1,7 @@
-* (3) `[[n,call],[[lang,Lang],Debug,[Function,Arguments],Types,Modes,Functions]]` e.g. `[[n,call],[[lang,same],same,[[n,member2a],[["a","b","c"],[v,b]]],  [[[n,member2a],[[[t, number], [t, number], [t, number]], [t, number]]]],
-        [[[n,member2a],[input,output]]],
-[[[n,member2a],[[v,a],[v,b]],":-",
-        [       [[n,member2],[[v,a],[v,b]]]]
+* (3) `[[n,call],[[lang,Lang],Debug,[Function,Arguments],Types,Modes,Functions]]` e.g. `[[n,call],[[lang,same],same,[[n,member2a],[[v,b],["a","b","c"]]],  [[[n,member2a],[[t, number], [[t, number], [t, number], [t, number]]]]],
+        [[[n,member2a],[output,input]]],
+[[[n,member2a],[[v,b],[v,a]],":-",
+        [       [[n,member2],[[v,b],[v,a]]]]
         ]]]]` returns `[v,b]="a"`. (See call(2) above for possible values of Lang and Debug.)
 
 * `[[n,trace]]` switches on trace (debug) mode.
