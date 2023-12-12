@@ -6,4 +6,4 @@
 
 * (2) `[[n,call],[[lang,Lang],Debug,[Function,Arguments],Functions]]` e.g. `[[n,call],[[lang,same],same,[[n,member2a],[[v,b],["a","b","c"]]],
 [[[n,member2a],[[v,b],[v,a]],":-",
-	[[[n,member2],[[v,b],[v,a]]]]]]]]` returns `[v,b]="a"`, where Lang may be e.g. `"en"`, etc., or `same` (meaning the same language as the parent predicate) and Debug may be `on`, `off` or `same` (meaning the same debug status as the parent predicate).
+	[[[n,member],[[v,b],[v,a]]]]]]]]` returns `[v,b]="a"`, where Lang may be e.g. `"en"`, etc., or `same` (meaning the same language as the parent predicate) and Debug may be `on`, `off` or `same` (meaning the same debug status as the parent predicate).
