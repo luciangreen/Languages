@@ -49,7 +49,7 @@ lang_db_generator(List_of_words,Target_language1) :-
 %% list of langs to put words into
 	
 	findall(_,(member(Target_language10,Target_language1),
-	(string(Target_language10)->true;(concat_list(["Error: Target_language1: ",Target_language1," not in format \"<Target_language1>\"."],_Notification1)%,writeln(Notification1)
+	(string(Target_language10)->true;(concat_list(["Error: Target_language1: ",Target_language1," not in format \"<Target_language1>\"."],_Notification11)%,writeln(Notification1)
 	,fail)),
 
 findall([Input,Input1,Target_language10,Output3],(member([Input,Input1],List_of_words2),translate4(Input1,"en",Target_language10,Output3)),Output4),
