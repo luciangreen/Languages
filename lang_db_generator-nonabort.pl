@@ -1,9 +1,9 @@
 %% lang_db_generator(Target_language)
 %% New repository, with dbs in each rep
 
-%:- include('../culturaltranslationtool/ctt2.pl'). % leave these commented out
-%:- include('../culturaltranslationtool/edit.pl'). % "
-%:- include('../listprologinterpreter/la_strings'). % leave off
+%:-include('../culturaltranslationtool/ctt2.pl'). % leave these commented out
+%:-include('../culturaltranslationtool/edit.pl'). % "
+%:-include('../listprologinterpreter/la_strings.pl'). % leave off
 
 :- dynamic lang_db/1.
 
